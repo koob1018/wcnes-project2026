@@ -1,0 +1,7 @@
+file,d0,d1,deviation_khz,center_offset_mhz,min_rx_bw_khz,status,reason,total_rows,valid_rows,received_packets,missing_packets_est,estimated_sent_packets,per,ber,reliability_pct,avg_rssi_dbm,rssi_std_dbm
+18-14无数据.txt,18,14,992.0634920634925,7.936507936507937,2084.126984126985,excluded,empty_file,,,,,,,,,,
+20-16无数据.txt,20,16,781.25,7.03125,1662.5,excluded,empty_file,,,,,,,,,,
+22-18无数据.txt,22,18,631.3131313131312,6.313131313131313,1362.6262626262624,excluded,empty_file,,,,,,,,,,
+24-20无数据.txt,24,20,520.8333333333335,5.729166666666666,1141.666666666667,excluded,empty_file,,,,,,,,,,
+30-24无数据.txt,30,24,520.8333333333333,4.6875,1141.6666666666665,excluded,empty_file,,,,,,,,,,
+36-28很差.txt,36,28,496.03174603174625,3.9682539682539684,1092.0634920634925,excluded,insufficient_valid_packets<20,4.0,4.0,,,,,,,,
