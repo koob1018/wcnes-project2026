@@ -1,0 +1,15 @@
+{
+  "session_id": "20260417_174502",
+  "runs": [
+    {
+      "run_id": "d20_d18_b100k",
+      "receiver_task_file": "D:\\Coursework\\wcnes-project2026\\automation\\results\\runs\\session_20260417_174502\\d20_d18_b100k\\receiver_task.json",
+      "run_meta_file": "D:\\Coursework\\wcnes-project2026\\automation\\results\\runs\\session_20260417_174502\\d20_d18_b100k\\run_meta.json"
+    },
+    {
+      "run_id": "d22_d20_b100k",
+      "receiver_task_file": "D:\\Coursework\\wcnes-project2026\\automation\\results\\runs\\session_20260417_174502\\d22_d20_b100k\\receiver_task.json",
+      "run_meta_file": "D:\\Coursework\\wcnes-project2026\\automation\\results\\runs\\session_20260417_174502\\d22_d20_b100k\\run_meta.json"
+    }
+  ]
+}

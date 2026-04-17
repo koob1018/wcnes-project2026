@@ -1,0 +1,4 @@
+run_id,clock_div0,clock_div1,desired_baud,target_packets,receiver_timeout_s,enabled,notes
+d20_d18_b100k,20,18,100000,200,120,1,baseline
+d22_d20_b100k,22,20,100000,200,120,1,
+d24_d22_b100k,24,22,100000,200,120,0,disabled example

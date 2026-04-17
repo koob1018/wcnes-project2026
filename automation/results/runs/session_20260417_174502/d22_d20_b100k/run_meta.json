@@ -1,0 +1,21 @@
+{
+  "run_id": "d22_d20_b100k",
+  "tag_params": {
+    "clock_div0": 22,
+    "clock_div1": 20,
+    "desired_baud": 100000
+  },
+  "tag_serial_log": "D:\\Coursework\\wcnes-project2026\\automation\\results\\raw\\20260417_174502_d22_d20_b100k_tag_serial.txt",
+  "receiver_task": {
+    "run_id": "d22_d20_b100k",
+    "target_packets": 200,
+    "timeout_s": 120,
+    "save_path": "D:\\Coursework\\wcnes-project2026\\automation\\results\\raw\\20260417_174502_d22_d20_b100k_receiver_log.txt",
+    "base_freq_hz": 2455965909,
+    "data_rate_baud": 100000,
+    "deviation_hz": 284091,
+    "rx_filter_bw_hz": 668182,
+    "source": "tag_serial_computed_baseband_settings",
+    "suggested_ahk_command": "AutoHotkey.exe automation/gui/smartrf_mvp.ahk automation/gui/smartrf_coords.ini 2455965909 100000 284091 668182 \"D:\\Coursework\\wcnes-project2026\\automation\\results\\raw\\20260417_174502_d22_d20_b100k_receiver_log.txt\" 120 200"
+  }
+}

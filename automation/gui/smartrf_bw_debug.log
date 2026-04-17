@@ -1,0 +1,8 @@
+20260417161359 | target_khz=794.444 | index=40 | down_count=39 | chosen_khz=3767.4
+20260417161359 | dropdown_click at (208,706)
+20260417161412 | down_sent=39
+20260417161412 | dropdown_confirm enter_sent=1
+20260417161547 | target_khz=794.444 | index=32 | down_count=31 | chosen_khz=941.8
+20260417161547 | dropdown_click at (208,706)
+20260417161559 | down_sent=31
+20260417161559 | dropdown_confirm enter_sent=1

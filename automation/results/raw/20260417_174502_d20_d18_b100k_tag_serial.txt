@@ -1,0 +1,5 @@
+Computed baseband settings: 
+- baudrate: 100000
+- Center offset: 6597222
+- deviation: 347222
+- RX Bandwidth: 794444
