@@ -33,6 +33,10 @@
 #define RADIO_MOSI              19
 #define RADIO_SCK               18
 
+/* Tag experiment entry point:
+ * the Windows automation flow updates CLOCK_DIV0, CLOCK_DIV1, and DESIRED_BAUD.
+ * Keep other defines fixed unless the experiment design explicitly changes.
+ */
 #define TX_DURATION            250 // send a packet every 250ms (when changing baud-rate, ensure that the TX delay is larger than the transmission time)
 #define RECEIVER              1352 // define the receiver board either 2500 or 1352
 #define PIN_TX1                  6

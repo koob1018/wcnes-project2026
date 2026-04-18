@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Tag-side MVP pipeline: patch main.c macros, build/flash, parse serial output.
+"""Tag-side helpers for the MVP automation path.
 
-This script intentionally keeps scope small:
-- edits only CLOCK_DIV0, CLOCK_DIV1, DESIRED_BAUD in carrier-receiver-baseband/main.c
-- optionally runs cmake+nmake and picotool flash
-- reads tag serial output and parses computed baseband settings
+Scope is intentionally narrow:
+- patch only the tag experiment entry macros in `carrier-receiver-baseband/main.c`
+- optionally build and flash
+- parse the final `set rx ...` receiver parameters from tag serial output
 """
 
 from __future__ import annotations
@@ -19,10 +19,10 @@ from pathlib import Path
 from typing import Dict, Tuple
 
 PARAM_PATTERNS = {
-    "baudrate": re.compile(r"-\s*baudrate:\s*(\d+)", re.IGNORECASE),
-    "center_offset_hz": re.compile(r"-\s*Center\s*offset:\s*(\d+)", re.IGNORECASE),
-    "deviation_hz": re.compile(r"-\s*deviation:\s*(\d+)", re.IGNORECASE),
-    "rx_bandwidth_hz": re.compile(r"-\s*RX\s*Bandwidth:\s*(\d+)", re.IGNORECASE),
+    "rx_base_freq_hz": re.compile(r"set\s+rx\s+f_carrier.*\]\s*(\d+)", re.IGNORECASE),
+    "deviation_hz": re.compile(r"set\s+rx\s+f_dev:.*\]\s*(\d+)", re.IGNORECASE),
+    "baudrate": re.compile(r"set\s+rx\s+r_data:.*\]\s*(\d+)", re.IGNORECASE),
+    "rx_bandwidth_hz": re.compile(r"set\s+rx\s+bw:.*\]\s*(\d+)", re.IGNORECASE),
 }
 
 DEFINE_PATTERNS = {
@@ -112,15 +112,15 @@ def read_serial_settings(port: str, baud: int, timeout_s: int, log_file: Path) -
             lines.append(line)
             fp.write(line + "\n")
             fp.flush()
-            if "Computed baseband settings" in line:
-                # keep reading a bit more to capture all fields
+            if "set rx f_carrier" in line:
+                # keep reading a bit more to capture the other receiver fields
                 time.sleep(0.8)
             try:
                 return parse_settings_from_lines(lines)
             except RuntimeError:
                 pass
 
-    raise RuntimeError("Timeout waiting for computed baseband settings from tag serial output")
+    raise RuntimeError("Timeout waiting for final set rx receiver settings from tag serial output")
 
 
 def run_single(
@@ -140,6 +140,8 @@ def run_single(
     picotool_path: str,
     serial_log_file: Path,
 ) -> Dict[str, int]:
+    # Keep the tag-side contract explicit: one run updates one parameter set,
+    # then returns the receiver settings derived from the tag's own serial output.
     update_main_c(main_c_path, d0, d1, desired_baud)
 
     if enable_build:
@@ -151,7 +153,6 @@ def run_single(
     time.sleep(2)
 
     parsed = read_serial_settings(serial_port, serial_baud, serial_timeout_s, serial_log_file)
-    parsed["rx_base_freq_hz"] = carrier_freq_hz + parsed["center_offset_hz"]
     return parsed
 
 

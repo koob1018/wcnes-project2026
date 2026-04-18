@@ -1,0 +1,3 @@
+run_id,clock_div0,clock_div1,desired_baud,target_packets,receiver_timeout_s,rx_base_freq_hz,deviation_hz,rx_data_rate_baud,rx_bandwidth_hz,tag_serial_log,receiver_raw_log,notes
+d20_d18_b100k,20,18,100000,200,120,2456596923,355468,99975,812500,D:\Coursework\wcnes-project2026\automation\results\20260418_141407\raw\d20_d18_b100k_tag_serial.txt,D:\Coursework\wcnes-project2026\automation\results\20260418_141407\raw\d20_d18_b100k_receiver_raw.txt,baseline
+d22_d20_b100k,22,20,100000,200,120,2455965728,304687,99975,812500,D:\Coursework\wcnes-project2026\automation\results\20260418_141407\raw\d22_d20_b100k_tag_serial.txt,D:\Coursework\wcnes-project2026\automation\results\20260418_141407\raw\d22_d20_b100k_receiver_raw.txt,candidate

@@ -1,6 +1,6 @@
 ; SmartRF MVP capture helper
 ; Usage:
-;   AutoHotkey.exe smartrf_mvp.ahk <coords_ini> <base_freq_hz> <data_rate_baud> <deviation_hz> <rx_bw_hz> <save_path> <timeout_s> <target_packets>
+;   AutoHotkey.exe smartrf_mvp.ahk <coords_ini> <base_freq_hz> <data_rate_baud> <deviation_hz> <rx_bw_hz> <save_path> <timeout_s> <target_packets> <stop_flag>
 ;
 ; Assumptions:
 ; - SmartRF is already open and on the Packet RX page.
@@ -14,8 +14,8 @@ SendMode Input
 SetKeyDelay, 30, 30
 CoordMode, Mouse, Client
 
-if (A_Args.Length() < 8) {
-    MsgBox, 16, Error, Missing args.`nExpected: ini base_freq data_rate deviation rx_bw save_path timeout target_packets
+if (A_Args.Length() < 9) {
+    MsgBox, 16, Error, Missing args.`nExpected: ini base_freq data_rate deviation rx_bw save_path timeout target_packets stop_flag
     ExitApp
 }
 
@@ -27,6 +27,7 @@ rxBw := A_Args[5]
 savePath := A_Args[6]
 timeoutS := A_Args[7] + 0
 targetPackets := A_Args[8] + 0
+stopFlagPath := A_Args[9]
 
 IniRead, titleContains, %iniPath%, window, title_contains,
 IniRead, baseFreqX, %iniPath%, coords, base_freq_x
@@ -92,6 +93,9 @@ startTick := A_TickCount
 loop {
     elapsedS := (A_TickCount - startTick) / 1000.0
     if (elapsedS >= timeoutS) {
+        break
+    }
+    if (stopFlagPath != "" and FileExist(stopFlagPath)) {
         break
     }
 
