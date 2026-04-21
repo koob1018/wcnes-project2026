@@ -9,7 +9,7 @@ The intended workflow is:
 
 1. Set up the carrier manually before automation starts.
 2. Edit `automation/config/scan_plan.csv`.
-3. Adjust local machine settings in `automation/run.ps1`.
+3. Adjust local machine settings in `automation/run.ps1`, including repeat count.
 4. Run `automation/run.ps1`.
 5. The runner will:
    - patch tag parameters in `carrier-receiver-baseband/main.c`
@@ -17,13 +17,19 @@ The intended workflow is:
    - read tag serial output
    - parse receiver settings from the final `set rx ...` lines
    - launch SmartRF Studio GUI automation
-   - save raw logs only
+   - repeat the full scan plan for the configured number of rounds
+   - save raw logs grouped by `run_id`
+   - aggregate PER, BER, and RSSI across repeats
+   - generate comparison CSVs and a plot
 
 Outputs are intentionally limited to:
 
-- `automation/results/<session_id>/manifest.csv`
-- `automation/results/<session_id>/raw/*_tag_serial.txt`
-- `automation/results/<session_id>/raw/*_receiver_raw.txt`
+- `automation/results/<campaign_id>/manifest.csv`
+- `automation/results/<campaign_id>/raw/<run_id>/repeat_*_tag_serial.txt`
+- `automation/results/<campaign_id>/raw/<run_id>/repeat_*_receiver_raw.txt`
+- `automation/results/<campaign_id>/analysis/per_repeat.csv`
+- `automation/results/<campaign_id>/analysis/summary.csv`
+- `automation/results/<campaign_id>/analysis/comparison_metrics.png`
 
 No per-run JSON bridge files are generated.
 
@@ -68,6 +74,7 @@ Before the first run, open `automation/run.ps1` and set:
 - `AutoHotkeyExe`
 - `EnableBuild`
 - `EnableFlash`
+- `Repeats`
 
 The Python runner is still available if you need it, but the intended daily
 entry point is now `automation/run.ps1`.
@@ -95,6 +102,7 @@ Assumptions:
 - `config/scan_plan.csv`: the only experiment parameter table
 - `run.ps1`: the only Windows entry script you should run manually
 - `scripts/run_scan.py`: the main experiment runner
+- `scripts/analyze_campaign.py`: repeated-run aggregation and plotting
 - `scripts/tag_pipeline.py`: tag patch/build/flash/serial helpers
 - `gui/smartrf_mvp.ahk`: SmartRF Studio GUI automation
 - `gui/smartrf_coords.ini`: machine-specific GUI coordinates

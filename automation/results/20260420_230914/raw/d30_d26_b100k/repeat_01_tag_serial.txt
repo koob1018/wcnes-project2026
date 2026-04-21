@@ -1,0 +1,14 @@
+Computed baseband settings: 
+- baudrate: 100000
+- Center offset: 4487179
+- deviation: 320513
+- RX Bandwidth: 741026
+
+Configuring one CC2500 as carrier generator:
+set tx f_carrier [6175507 0 0 0] 2449999725
+
+Configuring one CC2500 to approximate the obtained radio settings:
+set rx f_carrier [6186818 0 0 0] 2454487121
+set rx f_dev: [7 4] 330078
+set rx r_data: [11 248] 99975
+set rx bw: [0 0] 812500

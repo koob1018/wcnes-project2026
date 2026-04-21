@@ -1,0 +1,2 @@
+campaign_id,repeat_index,run_id,clock_div0,clock_div1,desired_baud,target_packets,receiver_timeout_s,rx_base_freq_hz,deviation_hz,rx_data_rate_baud,rx_bandwidth_hz,tag_serial_log,receiver_raw_log,notes
+20260420_224925,1,d18_d16_b100k,18,16,100000,200,120,2457378082,457031,99975,812500,D:\Coursework\wcnes-project2026\automation\results\20260420_224925\raw\d18_d16_b100k\repeat_01_tag_serial.txt,D:\Coursework\wcnes-project2026\automation\results\20260420_224925\raw\d18_d16_b100k\repeat_01_receiver_raw.txt,delta2

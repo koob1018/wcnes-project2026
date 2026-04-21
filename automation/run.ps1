@@ -15,6 +15,8 @@ $CarrierFreqHz = 2450000000
 
 $EnableBuild = $true
 $EnableFlash = $true
+$Repeats = 5
+$PayloadSize = 14
 
 $PicotoolPath = "C:\Users\16143\.pico-sdk\picotool\2.2.0-a4\picotool\picotool.exe"
 $AutoHotkeyExe = "AutoHotkey.exe"
@@ -43,7 +45,9 @@ $Args = @(
     "--receiver-ahk-script", $ReceiverAhkScript,
     "--receiver-coords-ini", $ReceiverCoordsIni,
     "--results-dir", $ResultsDir,
-    "--stop-flag", $StopFlag
+    "--stop-flag", $StopFlag,
+    "--repeats", $Repeats,
+    "--payload-size", $PayloadSize
 )
 
 if ($EnableBuild) {

@@ -55,6 +55,25 @@ def run_cmd(args: list[str], cwd: Path) -> None:
         raise RuntimeError(f"Command failed ({proc.returncode}): {' '.join(args)}")
 
 
+def run_cmd_capture(args: list[str], cwd: Path) -> subprocess.CompletedProcess[str]:
+    return subprocess.run(
+        args,
+        cwd=str(cwd),
+        check=False,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+    )
+
+
+def _emit_tool_output(proc: subprocess.CompletedProcess[str]) -> None:
+    if proc.stdout:
+        print(proc.stdout, end="" if proc.stdout.endswith("\n") else "\n")
+    if proc.stderr:
+        print(proc.stderr, end="" if proc.stderr.endswith("\n") else "\n")
+
+
 def build_tag(project_dir: Path, build_dir: Path) -> None:
     build_dir.mkdir(parents=True, exist_ok=True)
     if shutil.which("nmake"):
@@ -74,10 +93,44 @@ def flash_tag(build_dir: Path, elf_name: str, picotool_path: str) -> None:
     elf_path = build_dir / elf_name
     if not elf_path.exists():
         raise FileNotFoundError(f"ELF not found: {elf_path}")
-    run_cmd([picotool_path, "reboot", "-uf"], cwd=build_dir)
-    time.sleep(4)
-    run_cmd([picotool_path, "load", str(elf_path)], cwd=build_dir)
-    run_cmd([picotool_path, "reboot"], cwd=build_dir)
+
+    max_attempts = 4
+    reboot_wait_s = 2.5
+    retry_wait_s = 3.0
+    last_error_details = ""
+
+    for attempt in range(1, max_attempts + 1):
+        print(f"[flash] attempt {attempt}/{max_attempts}: forcing Pico into BOOTSEL mode")
+        reboot_proc = run_cmd_capture([picotool_path, "reboot", "-f", "-u"], cwd=build_dir)
+        _emit_tool_output(reboot_proc)
+        time.sleep(reboot_wait_s)
+
+        print(f"[flash] attempt {attempt}/{max_attempts}: loading {elf_path.name}")
+        load_proc = run_cmd_capture([picotool_path, "load", str(elf_path)], cwd=build_dir)
+        _emit_tool_output(load_proc)
+        if load_proc.returncode == 0:
+            reboot_back_proc = run_cmd_capture([picotool_path, "reboot"], cwd=build_dir)
+            _emit_tool_output(reboot_back_proc)
+            if reboot_back_proc.returncode != 0:
+                raise RuntimeError(
+                    "Flash succeeded, but reboot back to application mode failed: "
+                    f"{' '.join([picotool_path, 'reboot'])}"
+                )
+            return
+
+        last_error_details = (
+            f"Command failed ({load_proc.returncode}): {picotool_path} load {elf_path}\n"
+            f"{load_proc.stdout}{load_proc.stderr}"
+        ).strip()
+        if attempt < max_attempts:
+            print(f"[flash] attempt {attempt}/{max_attempts} failed; waiting {retry_wait_s:.1f}s before retry")
+            time.sleep(retry_wait_s)
+
+    raise RuntimeError(
+        "Flash failed after multiple attempts. The Pico likely never reached BOOTSEL cleanly.\n"
+        "Check the USB cable/port, close other serial tools, and try reconnecting the board.\n"
+        f"{last_error_details}"
+    )
 
 
 def parse_settings_from_lines(lines: list[str]) -> Dict[str, int]:

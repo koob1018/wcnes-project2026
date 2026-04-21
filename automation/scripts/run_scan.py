@@ -2,12 +2,13 @@
 """Windows-first MVP experiment runner.
 
 Single execution path:
-CSV plan -> tag patch/build/flash -> tag serial parse -> SmartRF GUI automation
+CSV plan -> repeated tag patch/build/flash -> tag serial parse -> SmartRF GUI automation -> analysis
 
 Outputs are intentionally minimal:
 - tag serial raw logs
 - receiver raw logs
-- one session manifest CSV
+- one campaign manifest CSV
+- aggregated analysis CSVs and a comparison plot
 """
 
 from __future__ import annotations
@@ -24,6 +25,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 if str(SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPT_DIR))
 
+from analyze_campaign import analyze_campaign
 from tag_pipeline import run_single
 
 
@@ -93,6 +95,8 @@ def start_session_manifest(path: Path) -> None:
         writer = csv.writer(fp)
         writer.writerow(
             [
+                "campaign_id",
+                "repeat_index",
                 "run_id",
                 "clock_div0",
                 "clock_div1",
@@ -204,7 +208,7 @@ def main() -> None:
         "--results-dir",
         type=Path,
         default=Path("automation/results"),
-        help="Each session gets one folder under this directory.",
+        help="Each campaign gets one folder under this directory.",
     )
     parser.add_argument(
         "--stop-flag",
@@ -212,6 +216,10 @@ def main() -> None:
         default=Path("automation/stop.flag"),
         help="Create this file to request a graceful stop.",
     )
+    parser.add_argument("--repeats", default=1, type=int, help="How many times to repeat the full scan plan.")
+    parser.add_argument("--campaign-id", default="", help="Optional fixed campaign folder name.")
+    parser.add_argument("--payload-size", default=14, type=int, help="Receiver payload size in bytes for BER/PER analysis.")
+    parser.add_argument("--skip-analysis", action="store_true", help="Skip campaign aggregation and plotting.")
     args = parser.parse_args()
 
     root = Path.cwd()
@@ -233,88 +241,107 @@ def main() -> None:
     stop_flag = (root / args.stop_flag).resolve() if not args.stop_flag.is_absolute() else args.stop_flag.resolve()
 
     runs = load_runs_from_csv(plan_csv)
-
-    session_id = now_stamp()
-    session_dir = results_dir / session_id
-    raw_dir = session_dir / "raw"
-    manifest_csv = session_dir / "manifest.csv"
+    campaign_id = args.campaign_id.strip() or now_stamp()
+    campaign_dir = results_dir / campaign_id
+    analysis_dir = campaign_dir / "analysis"
+    manifest_csv = campaign_dir / "manifest.csv"
     start_session_manifest(manifest_csv)
 
     try:
-        for idx, run in enumerate(runs, start=1):
-            raise_if_stop_requested(stop_flag)
+        for repeat_index in range(1, args.repeats + 1):
+            print(f"[repeat {repeat_index}/{args.repeats}] starting full scan")
+            for idx, run in enumerate(runs, start=1):
+                raise_if_stop_requested(stop_flag)
 
-            run_id = str(run["run_id"])
-            d0 = int(run["clock_div0"])
-            d1 = int(run["clock_div1"])
-            desired_baud = int(run["desired_baud"])
-            timeout_s = int(run["receiver_timeout_s"])
-            target_packets = int(run["target_packets"])
-            notes = str(run.get("notes", ""))
+                run_id = str(run["run_id"])
+                d0 = int(run["clock_div0"])
+                d1 = int(run["clock_div1"])
+                desired_baud = int(run["desired_baud"])
+                timeout_s = int(run["receiver_timeout_s"])
+                target_packets = int(run["target_packets"])
+                notes = str(run.get("notes", ""))
 
-            tag_serial_log = raw_dir / f"{run_id}_tag_serial.txt"
-            receiver_raw_log = raw_dir / f"{run_id}_receiver_raw.txt"
+                run_raw_dir = campaign_dir / "raw" / run_id
+                tag_serial_log = run_raw_dir / f"repeat_{repeat_index:02d}_tag_serial.txt"
+                receiver_raw_log = run_raw_dir / f"repeat_{repeat_index:02d}_receiver_raw.txt"
 
-            print(f"[{idx}/{len(runs)}] tag {run_id}: d0={d0} d1={d1} baud={desired_baud}")
-            raise_if_stop_requested(stop_flag)
-            parsed = run_single(
-                main_c_path=main_c,
-                project_dir=project_dir,
-                build_dir=build_dir,
-                elf_name=args.elf_name,
-                d0=d0,
-                d1=d1,
-                desired_baud=desired_baud,
-                serial_port=args.serial_port,
-                serial_baud=args.serial_baud,
-                serial_timeout_s=args.serial_timeout_s,
-                carrier_freq_hz=args.carrier_freq_hz,
-                enable_build=args.enable_build,
-                enable_flash=args.enable_flash,
-                picotool_path=args.picotool_path,
-                serial_log_file=tag_serial_log,
-            )
+                print(
+                    f"[repeat {repeat_index}/{args.repeats}] "
+                    f"[{idx}/{len(runs)}] tag {run_id}: d0={d0} d1={d1} baud={desired_baud}"
+                )
+                raise_if_stop_requested(stop_flag)
+                parsed = run_single(
+                    main_c_path=main_c,
+                    project_dir=project_dir,
+                    build_dir=build_dir,
+                    elf_name=args.elf_name,
+                    d0=d0,
+                    d1=d1,
+                    desired_baud=desired_baud,
+                    serial_port=args.serial_port,
+                    serial_baud=args.serial_baud,
+                    serial_timeout_s=args.serial_timeout_s,
+                    carrier_freq_hz=args.carrier_freq_hz,
+                    enable_build=args.enable_build,
+                    enable_flash=args.enable_flash,
+                    picotool_path=args.picotool_path,
+                    serial_log_file=tag_serial_log,
+                )
 
-            print(f"[{idx}/{len(runs)}] receiver {run_id}: GUI capture")
-            raise_if_stop_requested(stop_flag)
-            run_receiver_capture(
-                ahk_exe=args.receiver_ahk_exe,
-                ahk_script=ahk_script,
-                coords_ini=coords_ini,
-                base_freq_hz=int(parsed["rx_base_freq_hz"]),
-                data_rate_baud=int(parsed["baudrate"]),
-                deviation_hz=int(parsed["deviation_hz"]),
-                rx_bw_hz=int(parsed["rx_bandwidth_hz"]),
-                save_path=receiver_raw_log,
-                timeout_s=timeout_s,
-                target_packets=target_packets,
-                stop_flag=stop_flag,
-            )
+                print(f"[repeat {repeat_index}/{args.repeats}] [{idx}/{len(runs)}] receiver {run_id}: GUI capture")
+                raise_if_stop_requested(stop_flag)
+                run_receiver_capture(
+                    ahk_exe=args.receiver_ahk_exe,
+                    ahk_script=ahk_script,
+                    coords_ini=coords_ini,
+                    base_freq_hz=int(parsed["rx_base_freq_hz"]),
+                    data_rate_baud=int(parsed["baudrate"]),
+                    deviation_hz=int(parsed["deviation_hz"]),
+                    rx_bw_hz=int(parsed["rx_bandwidth_hz"]),
+                    save_path=receiver_raw_log,
+                    timeout_s=timeout_s,
+                    target_packets=target_packets,
+                    stop_flag=stop_flag,
+                )
 
-            append_manifest_row(
-                manifest_csv,
-                [
-                    run_id,
-                    d0,
-                    d1,
-                    desired_baud,
-                    target_packets,
-                    timeout_s,
-                    parsed["rx_base_freq_hz"],
-                    parsed["deviation_hz"],
-                    parsed["baudrate"],
-                    parsed["rx_bandwidth_hz"],
-                    str(tag_serial_log.resolve()),
-                    str(receiver_raw_log.resolve()),
-                    notes,
-                ],
-            )
+                append_manifest_row(
+                    manifest_csv,
+                    [
+                        campaign_id,
+                        repeat_index,
+                        run_id,
+                        d0,
+                        d1,
+                        desired_baud,
+                        target_packets,
+                        timeout_s,
+                        parsed["rx_base_freq_hz"],
+                        parsed["deviation_hz"],
+                        parsed["baudrate"],
+                        parsed["rx_bandwidth_hz"],
+                        str(tag_serial_log.resolve()),
+                        str(receiver_raw_log.resolve()),
+                        notes,
+                    ],
+                )
 
-            raise_if_stop_requested(stop_flag)
+                raise_if_stop_requested(stop_flag)
     except KeyboardInterrupt:
         print(f"Stop requested. Exiting at a safe point. If present, clear: {stop_flag}")
     finally:
-        print(f"Session complete: {session_dir}")
+        if not args.skip_analysis and manifest_csv.exists():
+            try:
+                per_repeat_path, summary_path, plot_path = analyze_campaign(
+                    manifest_csv=manifest_csv,
+                    output_dir=analysis_dir,
+                    payload_size=args.payload_size,
+                )
+                print(f"Saved per-repeat metrics: {per_repeat_path}")
+                print(f"Saved summary metrics: {summary_path}")
+                print(f"Saved comparison plot: {plot_path}")
+            except Exception as exc:
+                print(f"Analysis skipped due to error: {exc}")
+        print(f"Campaign complete: {campaign_dir}")
 
 
 if __name__ == "__main__":
