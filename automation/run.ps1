@@ -15,7 +15,7 @@ $CarrierFreqHz = 2450000000
 
 $EnableBuild = $true
 $EnableFlash = $true
-$Repeats = 5
+$Repeats = 10
 $PayloadSize = 14
 
 $PicotoolPath = "C:\Users\16143\.pico-sdk\picotool\2.2.0-a4\picotool\picotool.exe"

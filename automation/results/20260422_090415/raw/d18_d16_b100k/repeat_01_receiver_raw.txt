@@ -1,0 +1,120 @@
+09:04:38.765 | 0f | 22 01 98 1a 7f 2f 7a 2c 16 2b 3f 1b 4a 20 f0  |  -96 CRC error
+09:04:39.225 | 0f | 24 01 b0 24 f0 20 2e 1e bc 18 3d 14 b3 23 28  | -104 CRC error
+09:04:40.265 | 0f | 28 11 e0 21 b3 17 85 21 31 12 36 29 e6 1b 28  |  -99 CRC error
+09:04:40.784 | 0b | 2a 01 f8 23 b2 1d 16 26 b1 22 60  | -100 CRC error
+09:04:41.039 | 0f | 2b 02 04 55 b4 26 4e ba f5 25 94 9a 07 21 5a  | -101 CRC error
+09:04:41.816 | 0f | 2e 02 a8 1e 56 0e 8d 20 a2 22 d0 1a d9 1b 0c  | -104 CRC error
+09:04:42.079 | 0d | 2f 02 35 54 8a 2e 2a 25 45 1c 4b 4f 9e  | -107 CRC error
+09:04:42.853 | 0f | 32 02 48 20 ed 1f bc 1d 6e 27 8b 20 c9 1e ec  |  -96 CRC error
+09:04:43.631 | 0f | 35 02 7c 22 03 1e 32 2a 94 24 70 11 58 1a 93  | -101 CRC error
+09:04:43.891 | 0f | 36 02 88 1f 0a 19 b7 1c 14 24 3a 1f 91 19 f5  | -102 CRC error
+09:04:44.415 | 0f | 38 02 a0 26 04 22 d4 a0 c6 21 5d 24 4f 17 f6  |  -97 CRC error
+09:04:45.191 | 0f | 3b 02 c4 21 54 1e cd 1b 30 19 01 1c b6 1e 9a  |  -96 CRC error
+09:04:45.452 | 0f | 3c 02 d0 1d eb 1e f3 1b 89 27 6b 1f b6 23 c4  | -101 CRC error
+09:04:46.240 | 8f | 3f 02 f4 a4 b4 2b a8 25 2c 1f f1 17 6b 13 e6 d5 ad fa aa db 55 ea ab ae aa b5 55 55 6f fd 57 57 55 5f ea d6 af 55 7f d5 aa be aa aa fe aa ff fd 5a ad 55 56 da aa af aa bf 55 5d 5e af ff d5 6a ae aa de aa fd 5a ad 55 4b 52 d5 6a ba ba b5 57 55 aa b5 5d 55 5d 6d da aa fd 55 55 aa b5 fd 5b 6a b5 5d 7d 5a ad 4a d5 aa ea ba ad 7f ab 55 5d 55 57 d5 55 aa ad bf d5 55 aa ea aa d5 57 ea aa aa eb d6 aa aa fd 5d 5d 56 aa fa aa b5 55 7f  | -101 CRC error
+09:04:46.484 | 0f | 40 03 00 1e 36 18 c2 22 cd 29 d2 19 38 1a 62  |  -96 CRC error
+09:04:46.745 | 0f | 41 03 0c 1f 10 17 51 25 b3 1e 41 2f 64 26 b5  |  -94 CRC error
+09:04:47.005 | 0f | 42 03 18 16 c2 0b 22 24 10 16 19 22 12 0e 6e  |  -96 CRC error
+09:04:47.264 | 0f | 43 03 24 18 24 13 41 14 69 20 39 24 f7 20 24  |  -94 CRC error
+09:04:47.523 | 0f | 44 03 30 18 a6 1d 34 27 4b 24 29 0f 8f 13 73  | -103 CRC error
+09:04:48.555 | 0f | 48 03 60 10 71 27 54 14 71 15 2a 1e 89 32 62  |  -96 CRC error
+09:04:48.820 | 0f | 49 03 6c 1b 47 23 73 26 c8 1f 55 13 a5 22 c0  |  -93 CRC error
+09:04:49.077 | 0f | 4a 03 78 0a 5e 23 d0 17 3c 22 41 21 d9 2f 8b  |  -97 CRC error
+09:04:49.337 | 0f | 4b 03 84 1d 57 1d 29 19 4a 20 69 28 56 18 6c  |  -96 CRC error
+09:04:49.596 | 0f | 4c 03 90 19 24 22 c0 1c 24 2a 55 2a ba a6 1d  | -102 CRC error
+09:04:49.856 | 0f | 4d 03 9c 0e 77 1d fb 23 c8 27 2b 1b 39 21 df  | -104 CRC error
+09:04:50.112 | 0f | 4e 03 a8 28 9c 12 9c 14 9b 1a 14 1a bd 1a 3c  | -102 CRC error
+09:04:50.373 | 0f | 4f 03 b4 1c e5 22 0f 21 ed 22 4c 19 2a 28 35  | -100 CRC error
+09:04:50.635 | 0f | 50 03 c0 1e 56 20 e6 13 92 1d f4 1c d2 24 fd  |  -98 CRC error
+09:04:50.889 | 0f | 51 43 cc 1c 04 30 5a a9 07 1b 37 1c 8d 54 aa  |  -99 CRC error
+09:04:51.148 | 0f | 52 03 d8 13 df 1d ce 21 0d 22 db 26 73 11 7c  |  -96 CRC error
+09:04:52.189 | 0f | 56 04 08 19 ef 1f cd 2d fe 16 6b 26 fc 2f 30  | -103 CRC error
+09:04:57.375 | 0f | 6a 04 f8 1f 76 1f 8c 22 66 27 74 25 1c 28 95  |  -99 CRC error
+09:04:57.643 | 0f | 6b 05 04 26 2f 5b d0 1d b9 12 c0 13 32 1e d4  |  -98 CRC error
+09:04:58.411 | 0f | 6e 05 28 00 00 00 00 00 00 00 00 00 00 00 00  | -104 CRC error
+09:04:58.672 | 0f | 6f 05 34 13 1f 19 de 27 9e 1a 72 1c 2c 17 e1  | -105 CRC error
+09:04:58.929 | 0f | 70 85 40 33 47 15 b3 2a 98 22 8a 22 05 10 41  |  -98 CRC error
+09:05:00.493 | 2d | 76 a5 94 a5 9e 25 55 3c d4 2a a0 a4 2a 32 b1 aa bf aa aa b5 56 b5 55 55 75 55 56 df 55 55 5f 55 5a aa d7 55 55 55 aa 96 a9 ad ab 5a aa  | -104 CRC error
+09:05:00.760 | 8f | 77 05 94 23 fa 13 d4 1e 82 24 e8 22 5b 26 78 aa ff d5 5a ba b5 aa ad 75 7f ea aa aa aa aa aa d5 2b fa aa aa db 77 ea ff fa aa ae af fa b5 55 5f d5 aa fa ab ab a5 d5 55 55 55 55 7e aa 56 af ff 56 d5 54 a5 aa ba af 55 55 52 55 2a aa ad 55 75 57 d5 4b 0a aa f5 5a a9 57 ab 5a aa bf 55 fd 56 d5 ab f5 6a d5 55 55 55 5c af f5 52 aa ad 55 b5 aa d7 fa b5 5f fa ab 55 4a aa aa aa aa b5 55 55 fe aa ab 54 ad ea df ff fd 5a be aa aa aa aa  | -103 CRC error
+09:05:01.516 | 0f | 7a 05 b8 25 74 2a 1a 19 89 26 b7 17 8b 25 fc  | -100 CRC error
+09:05:02.042 | 0f | 7c 05 d0 24 5d 17 d1 21 c6 29 54 21 41 1f 21  | -104 CRC error
+09:05:02.295 | 0f | 7d 05 dc 22 c3 1a 45 15 16 2b d7 1e 60 1e e3  | -102 CRC error
+09:05:02.561 | 0f | 7e 05 e8 2e a1 29 12 14 ec 15 b0 a2 af 15 e8  | -106 CRC error
+09:05:02.820 | 0f | 7f 45 d4 25 ab 26 51 22 09 19 22 17 16 1a e6  | -106 CRC error
+09:05:03.088 | 2f | 82 26 40 1c be 5a 43 2a f1 5b 5c 5a ad 2c a4 aa d5 7f ff fa ba ba b5 7e aa bb 55 ea ad 55 6a af aa b5 5a aa ab af ff aa aa d5 aa fe ab 6f 55  | -102 CRC error
+09:05:04.119 | 0f | 84 06 30 0f 52 32 00 18 1a 27 02 21 52 1e 64  | -106 CRC error
+09:05:05.673 | 0f | 8a 06 78 0d da 24 24 1b e4 1f 8a 23 95 1b c3  | -101 CRC error
+09:05:05.933 | 0f | 8b 06 84 2b da 20 cc 20 1d 26 b9 19 c6 1d 0a  | -100 CRC error
+09:05:06.445 | 2d | 0d 56 9c 15 e4 24 8c 26 97 1d 9a 2a a4 26 9d fd 55 55 55 d5 ea b5 55 69 80 08 aa ab 55 6a d5 5a aa b5 75 55 6a bf fe ae aa f5 55 55 ab  | -106 CRC error
+09:05:06.704 | 0f | 8e 06 a8 18 80 25 72 21 5b 18 30 a0 55 1b 4c  | -103 CRC error
+09:05:06.961 | 0f | 8f 06 b4 2f ce 1c a2 22 ce 1d f2 1f 79 13 ee  | -104 CRC error
+09:05:07.740 | 0f | 92 06 d8 0b fe 1f ab 10 de 1e 4d 15 d5 55 6b  |  -97 CRC error
+09:05:08.000 | 0f | 93 06 e4 12 da 25 6f 16 43 18 7f 27 46 29 f9  |  -95 CRC error
+09:05:08.774 | 0f | 96 07 08 21 0b 29 33 15 d6 1b 02 1c ce 14 d6  |  -98 CRC error
+09:05:09.038 | 0f | 97 07 14 22 9b 0c dc 20 e3 27 46 26 2f 22 c9  | -103 CRC error
+09:05:09.817 | 0f | 9a 57 3a 55 a2 1b f5 2d ea 5b 7f 23 31 25 a3  | -101 CRC error
+09:05:10.086 | 8f | 9b 07 44 22 75 17 ff 20 69 1f ed 1c d2 28 d2 ae 95 55 55 55 5e aa 75 55 55 56 b5 56 ea f5 75 5a aa aa aa ba a9 5a ab ae aa aa b5 6a ff 55 bf ab 56 d5 5a ef 55 55 bd 55 6a b5 6a da d5 55 57 d5 55 56 ab 55 55 5f aa b5 5b aa ae aa ab 55 57 55 ea af aa a5 56 ab 55 5a b5 ff 55 55 55 2b 55 5e aa b5 55 5a f5 6a aa 55 5a b5 55 55 6a d7 fa aa aa ea d5 aa b5 55 ff 57 55 aa b7 55 55 aa d5 5f fe ad 55 55 2a ab 57 57 57 fe ab ea fa b5 5b  |  -98 CRC error
+09:05:10.333 | 0f | 9c 07 50 1f 7e 18 65 26 90 20 37 23 2a 24 99  | -101 CRC error
+09:05:10.855 | 0f | 9e 07 68 1a fa 10 b2 2f 87 17 ee 1b 78 26 8f  | -102 CRC error
+09:05:11.372 | 0f | a0 07 a0 29 08 16 2e 17 b1 11 1b 1f d2 28 13  |  -97 CRC error
+09:05:11.629 | 0f | a1 07 8c 1e f3 23 98 1e 03 17 4a 1f 44 16 4a  |  -97 CRC error
+09:05:11.888 | 0f | a2 07 98 25 0c aa b5 55 54 2a bf fd 55 15 fd  | -101 CRC error
+09:05:12.665 | 0f | a5 07 bc 25 8c 16 c0 16 9d 22 5e 1f 2d 2e e1  |  -95 CRC error
+09:05:12.922 | 0f | a6 07 c8 1b 59 24 32 0b 75 21 4c 18 5e 18 53  |  -99 CRC error
+09:05:13.699 | 0f | a9 07 ec 1a f4 15 2a 28 a9 22 83 30 80 1a b6  |  -98 CRC error
+09:05:13.961 | 0f | aa 07 f8 0f 48 26 a7 27 59 1e b1 13 70 19 65  |  -98 CRC error
+09:05:14.741 | 0f | ad 29 52 26 23 52 81 14 7e 26 cf 22 15 10 c4  | -103 CRC error
+09:05:16.295 | 0d | b3 08 64 15 4a 25 6b 1e d6 23 6b 28 e8  | -104 CRC error
+09:05:17.852 | 2f | b9 0a ad 5b d8 5a 95 2d 4d 32 d2 95 5d 56 49 ab 5a af d5 5b 56 ad 5a b5 5a ab ea b6 aa b5 55 56 55 56 aa ea ea f5 b5 5b db fa aa ab 56 da aa  | -101 CRC error
+09:05:18.888 | 0f | bd 08 dc 1f 13 1f b9 15 66 10 9c 1e 2f 1a b6  | -103 CRC error
+09:05:19.159 | 8e | aa aa aa aa a9 1a 73 24 6b 1f 47 0c f5 2b f6 ea d5 52 d5 40 00 ea ad 6a fe a9 6f f5 55 aa ab f5 6a f5 55 54 aa aa aa 50 aa aa aa aa aa bf ab 55 f5 55 55 54 aa fd 55 aa 55 55 55 57 ea ff aa aa ea d5 57 ea ba aa ab 5a ff 55 56 aa ab 57 d5 6b f5 56 aa aa ab ff d5 bd 55 04 55 55 54 b5 5d 55 68 42 95 56 aa aa bf fa aa 5f 55 6b d5 7d 57 55 d5 55 55 ea aa ae aa b5 75 55 57 55 55 2a aa aa b5 6f ff f5 7a af 57 d5 aa d5 fa aa d4 b2  | -107 CRC error
+09:05:19.402 | 0f | bf 6a a5 35 6c 12 ce 5a d6 1b db 24 aa ac 22  | -102 CRC error
+09:05:19.923 | 0f | c1 09 0c 1f ba 18 27 18 f5 0a a6 1d 25 14 74  |  -97 CRC error
+09:05:23.037 | 2f | cd 09 9c 24 f0 1b 08 18 5d 19 a4 25 1a 08 32 fd 5a aa aa ff 55 d6 a5 5a aa aa af fa ab 5f ff d5 6b 55 7f ff ab 56 aa bf fa ac ba aa fe aa b4  | -106 CRC error
+09:05:24.072 | 0f | d1 09 cc 15 85 20 f9 29 64 19 5d 1c e1 24 98  | -100 CRC error
+09:05:24.331 | 0f | d2 15 52 ee d5 7a b5 55 59 d5 5b aa aa b5 5a  |  -99 CRC error
+09:05:25.104 | 0b | d5 0a fc 16 a5 25 19 25 57 1c da  |  -98 CRC error
+09:05:25.366 | 0e | d6 0a 08 22 aa 18 7f 18 eb 52 ab 59 2d 4c  | -100 CRC error
+09:05:25.674 | 0f | d7 0a 14 17 3b 14 c0 0c 6b 20 c3 2f 67 10 4e  |  -98 CRC error
+09:05:25.887 | 0f | d8 0a 20 2c 77 17 b9 30 4d 2c 78 1e f7 22 52  |  -93 CRC error
+09:05:26.143 | 0f | d9 0a 2c 26 05 1c c2 28 6a 23 ad 2e 35 14 dc  |  -93 CRC error
+09:05:26.405 | 0f | da 0a 38 1d cf 2f 24 18 78 22 b9 1e 81 2e 2d  |  -93 CRC error
+09:05:26.922 | 0f | dc 0a 50 2e 2c 0e 13 22 94 2d 34 22 90 1c 98  | -100 CRC error
+09:05:27.438 | 0f | de 0a 68 1f 51 25 c8 1f 4e 22 a8 1f 90 27 f2  | -103 CRC error
+09:05:27.701 | 0f | df 0a 74 21 ae 10 52 2c 9a 1f eb 27 6a 0f b7  | -104 CRC error
+09:05:27.962 | 0f | e0 0a 80 24 d0 23 76 26 b4 1d c2 16 22 19 ea  |  -99 CRC error
+09:05:28.225 | 0f | e1 0a 8c 16 84 15 b6 9d c1 1c ab fe aa aa bd  | -100 CRC error
+09:05:30.295 | 0f | e9 0a ec 38 f4 26 59 18 00 1d d2 23 81 1a 8a  |  -97 CRC error
+09:05:30.816 | 0f | eb 0b 04 20 d5 26 76 23 1c 1e 3a 1e 15 2a 37  |  -99 CRC error
+09:05:31.074 | 0f | ec 0b 10 17 9b 1d 3d 1f b8 20 63 28 55 20 cb  | -102 CRC error
+09:05:31.327 | 0f | ed 0b 1c 1a bf 2a 2c 2f bb 1f 64 18 f0 17 8f  | -101 CRC error
+09:05:31.593 | 0f | ee 0b 28 2a f4 32 ee 1f 77 22 8e 1a 6d 15 7c  | -102 CRC error
+09:05:31.846 | 0f | ef 0b 34 21 dc 21 c0 19 8d 29 97 23 10 28 f6  | -102 CRC error
+09:05:32.104 | 0f | f0 0b 40 24 85 1f ec 18 14 23 6f 20 cb 1b d5  |  -96 CRC error
+09:05:32.625 | 0f | f2 0b 58 15 57 16 a8 13 9d 1d d7 12 e2 1d 5a  |  -97 CRC error
+09:05:32.888 | 0f | f3 0b 64 14 ef 19 ef 18 9c 28 8e 27 24 16 76  |  -96 CRC error
+09:05:33.402 | 0f | f5 4b 6c aa ab 19 85 1d 6f 11 a0 1e d4 28 c2  | -102 CRC error
+09:05:33.664 | 0f | f6 0b 88 24 1b 20 c4 23 95 1a ab 21 01 27 72  |  -97 CRC error
+09:05:34.183 | 0f | fa 1b a8 25 b5 1d 29 2a b5 21 4a 2e da 17 6f  | -100 CRC error
+09:05:34.440 | 0f | f9 0b ac 22 55 22 27 2e ef 16 ce 22 ab 27 41  | -100 CRC error
+09:05:36.257 | 0f | 01 0c 00 20 56 05 5c 1e 27 17 d2 9a 09 0e 34  |  -99 CRC error
+09:05:36.519 | 0f | 01 0c 0c 23 4a 1e 21 20 15 18 9e 22 a9 2b 68  |  -94 CRC error
+09:05:37.547 | 0f | 05 0c 3c 14 b3 11 39 11 fc 12 c3 14 7d 1e 47  |  -99 CRC error
+09:05:37.809 | 0f | 06 0d 48 1c 48 26 41 20 a6 25 55 20 95 2a 5b  | -100 CRC error
+09:05:38.067 | 0f | 07 0c 54 1d 99 5e 55 29 c4 1c 85 1b 4e 1c f7  | -104 CRC error
+09:05:47.400 | 2f | 2b 0e 04 1d 93 25 fb 1a c5 21 b9 27 17 19 bf 4b 2a ad 5d 55 56 ad 7f fd 52 aa ae a9 5a d7 55 ad 2d 55 55 55 d5 fa a9 69 02 95 52 aa 95 55 52  | -106 CRC error
+09:05:48.178 | 0f | 2e 0e 28 27 62 27 d5 1d 3b 24 18 22 17 1e 71  | -103 CRC error
+09:05:48.438 | 0f | 2f 0e 34 1b 56 1d 45 19 d5 5a ec 5a a6 1f a2  | -102 CRC error
+09:05:48.952 | 0f | 31 0e 4c 20 e5 18 1e 24 6d 27 b4 28 2b 35 5f  | -101 CRC error
+09:05:49.989 | 0f | 35 0e 7c 1f 6f 1c d5 25 f8 1f 9d 21 e0 27 04  | -104 CRC error
+09:05:51.547 | 2f | 3b 0e c4 29 92 19 14 a2 2e 2b fb 1c 96 1e 31 ab f5 5a b6 f5 55 6f ea ab ab 5f aa ad 6a ff d5 be ad ff aa ab 65 5a aa b6 ab d5 7b aa ea aa aa  |  -99 CRC error
+09:05:51.808 | 0f | 3c 0e d0 21 ee 19 1b 23 8e 1f 2a 25 2d 20 21  | -104 CRC error
+09:05:52.066 | 0d | 3d 2e dc 2a be 19 27 15 70 1f 9e 23 23  | -107 CRC error
+09:05:53.100 | 0f | 41 0f 0c 24 00 22 2b 14 45 21 d5 16 5d 16 ab  | -103 CRC error
+09:05:54.138 | 0f | 45 0f 3c 1f bd 1a d1 19 2d 18 0a 27 02 24 b1  | -100 CRC error
+09:05:55.692 | 0f | 4b 0f 84 1c e1 28 89 16 e4 13 b6 a0 6d 2b 19  |  -97 CRC error
+09:05:55.962 | 4f | 4d 4f 90 1a 88 1a 95 2a 32 20 85 2b 62 2e d7 5a ab aa aa b6 b5 55 56 aa ab 75 5d 57 aa 55 6a b5 5a d5 bd 55 55 55 ab 6a fd 5a b5 56 aa aa fe af f5 55 74 aa b5 55 ea bf d5 2a ae aa aa 55 55 55 57 fa aa ad 55 55 56 aa b5 5a d5 55 56 ae aa  | -103 CRC error
+09:05:56.729 | 0f | 4e 0f b4 1f 55 56 28 1a 0b 5b aa 19 93 1c 58  | -102 CRC error
+09:05:57.251 | 0f | 51 07 45 4a ba a9 08 1b 0e 1d 2a a5 54 b5 14  |  -96 CRC error
+09:05:58.543 | 0f | 56 92 0a a9 26 ab e9 2d 0e ad 46 18 4a 2b 95  | -104 CRC error
+09:05:58.806 | 0f | 57 10 14 19 49 26 b2 26 95 55 2a ea a9 4a 55  | -100 CRC error
